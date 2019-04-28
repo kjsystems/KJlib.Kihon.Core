@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Extensions.Logging;
 
 namespace kjlib.Kihon.Models
 {
@@ -220,7 +221,7 @@ namespace kjlib.Kihon.Models
                 char eof = (char)0x001a;
                 if (buf.IndexOf(eof) >= 0)
                 {
-                    log_.err(srcpath, gyono, "parsetxt", "EOFを無視します");
+                    log_.LogError(srcpath, gyono, "parsetxt", "EOFを無視します");
                     buf = buf.Replace(eof.ToString(), "");
                 }
 
@@ -265,13 +266,13 @@ namespace kjlib.Kihon.Models
                     char eof = (char)0x001a;
                     if (buf.IndexOf(eof) >= 0)
                     {
-                        log_.err(srcpath_, gyono_, "parsetxt", "EOFを無視します");
+                        log_.LogError(srcpath_, gyono_, "parsetxt", "EOFを無視します");
                         buf = buf.Replace(eof.ToString(), "");
                     }
 
                     if (amaritxt.Length > 500000 + 100000)
                     {
-                        log_.err(srcpath_, gyono_, "parsetxt",
+                        log_.LogError(srcpath_, gyono_, "parsetxt",
                             "タグを解釈できない1 buf=" + buf + " amari len=" + amaritxt.Length + " buf" + amaritxt);
                         throw new Exception("タグを解釈できない1 gyo=" + buf + "\r\namari=" + amaritxt);
                     }
@@ -285,7 +286,7 @@ namespace kjlib.Kihon.Models
             }
             catch (Exception ex)
             {
-                log_.err(srcpath_, gyono_, "parstext", ex.Message);
+                log_.LogError(srcpath_, gyono_, "parstext", ex.Message);
             }
         }
 
@@ -313,7 +314,7 @@ namespace kjlib.Kihon.Models
             }
             catch (Exception ex)
             {
-                log_.err(path, gyono_, "parsetxt", ex.Message);
+                log_.LogError(path, gyono_, "parsetxt", ex.Message);
             }
         }
 
@@ -470,13 +471,11 @@ namespace kjlib.Kihon.Models
             var parent = root;
             foreach (TagBase tag in taglst)
             {
-                //log_.err(path,tag.GyoNo,"parstree","tag="+tag.ToString()+" type="+tag.Type);
                 if (parent == null)
                 {
-                    log_.err(path, tag.GyoNo, "parstree", "親タグがnullはおかしい");
+                    log_.LogError(path, tag.GyoNo, "parstree", "親タグがnullはおかしい");
                 }
 
-                //log_.err(path, tag.GyoNo, "parstree", "parent="+cur.ToString());
                 if (tag.isOpen() == true && tag.isShort() != true)
                 {
                     parent.addChild(tag); //親を切り替え
@@ -511,7 +510,7 @@ namespace kjlib.Kihon.Models
             }
             catch (Exception ex)
             {
-                log_.err(path, 0, "parstree", ex.Message);
+                log_.LogError(path, 0, "parstree", ex.Message);
             }
         }
 
@@ -532,7 +531,7 @@ namespace kjlib.Kihon.Models
             }
             catch (Exception ex)
             {
-                log_.err("parstree", ex.Message);
+                log_.LogError("parstree", ex.Message);
             }
         }
 
