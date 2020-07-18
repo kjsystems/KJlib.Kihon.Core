@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace kjlib.Kihon.Models
+namespace kjlib.kihon.Models
 {
     public class BinUtil
     {

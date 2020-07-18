@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace kjlib.Kihon.Models
+namespace kjlib.kihon.Models
 {
     public class CharUtil
     {

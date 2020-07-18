@@ -1,4 +1,4 @@
-﻿namespace kjlib.Kihon.Models
+﻿namespace kjlib.kihon.Models
 {
     public class RubyText
     {
