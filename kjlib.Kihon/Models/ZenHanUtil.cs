@@ -16,7 +16,7 @@ namespace kj.kihon.Utils
         const string Hankaku = @"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ[\w!#$%&'*+/=?^_@{}\|~-]";
         const string Zenkaku = @"０１２３４５６７８９ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ［￥ｗ！＃＄％＆’＊＋／＝？＾＿＠｛｝￥｜￣－］";
 
-        static string ConvertTo(string buf,Convert conv)
+        public static string ConvertTo(string buf,Convert conv)
         {
             var sb = new StringBuilder();
             foreach (var ch in buf)
@@ -33,11 +33,11 @@ namespace kj.kihon.Utils
             }
             return sb.ToString();
         }
-        static public string ToHankaku(string buf)
+        public static string ToHankaku(string buf)
         {
             return ConvertTo(buf, Convert.Zen2Han);
         }
-        static public string ToZenkaku(string buf)
+        public static string ToZenkaku(string buf)
         {
             return ConvertTo(buf, Convert.Han2Zen);
         }

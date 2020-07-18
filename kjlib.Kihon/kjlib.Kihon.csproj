@@ -3,11 +3,16 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.2</Version>
+    <Version>1.0.5</Version>
+    <PackageId>kjlib.kihon</PackageId>
+    <Authors>KJ Systems, Inc.</Authors>
+    <Company>KJ Systems, Inc.</Company>
+    <Product>kjlib.kihon</Product>
+    <AssemblyName>kjlib.kihon</AssemblyName>
+    <RootNamespace>kjlib.kihon</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="kjlib.extensions" Version="1.0.2" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
   </ItemGroup>
 

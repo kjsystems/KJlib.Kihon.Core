@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace kjlib.Kihon.Models
+namespace kjlib.kihon.Models
 {
     public class RubyTextUtil
     {

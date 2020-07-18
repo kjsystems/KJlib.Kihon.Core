@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 
-namespace kjlib.Kihon.Models
+namespace kjlib.kihon.Models
 {
     public class TokenUtil
     {
@@ -12,12 +12,12 @@ namespace kjlib.Kihon.Models
         static public string delSpace2(string buf)
         {
             buf = buf.Replace(" ", "");
-            buf = buf.Replace("@", "");
+            buf = buf.Replace("ï¿½@", "");
             buf = buf.Replace("\t", "");
             return buf;
         }
         /**
-		 ”{¸“x@1.0533469249065286E-2
+		 ï¿½{ï¿½ï¿½ï¿½xï¿½@1.0533469249065286E-2
 		 */
         static public bool isBaiseido(string buf)
         {
@@ -27,7 +27,7 @@ namespace kjlib.Kihon.Models
             }
             return false;
         }
-        //”š•”•ª‚ğæ‚èœ‚­
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½èœï¿½ï¿½
         static public string removeSujiFromText(string buf)
         {
             StringBuilder sb = new StringBuilder();
@@ -38,7 +38,7 @@ namespace kjlib.Kihon.Models
             }
             return sb.ToString();
         }
-        //”š•”•ª‚ğæ“¾‚·‚é
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
         static public string getSujiFromText(string buf)
         {
             StringBuilder sb = new StringBuilder();
@@ -48,7 +48,7 @@ namespace kjlib.Kihon.Models
             }
             return sb.ToString();
         }
-        //”¼ŠpSP‚ª‚ ‚ê‚Îtrue
+        //ï¿½ï¿½ï¿½pSPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½true
         static public bool hasSpace(string buf)
         {
             if (buf != null && buf.IndexOf(" ") >= 0)
@@ -65,7 +65,7 @@ namespace kjlib.Kihon.Models
             sb.Append(sep);
             return sb.ToString();
         }
-        // •K—v‚È‚ç""‚ğ’Ç‰Á‚·‚é
+        // ï¿½Kï¿½vï¿½È‚ï¿½""ï¿½ï¿½Ç‰ï¿½ï¿½ï¿½ï¿½ï¿½
         static public string addQuot(string buf)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
@@ -108,7 +108,7 @@ namespace kjlib.Kihon.Models
             return delKakko(buf, kakko_s, kakko_e, true);
         }
         /**
-		 * ‚©‚Á‚±‚ğ‚Æ‚é 
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ 
 		 **/
         static public string delKakko(string buf, string kakko_s, string kakko_e, bool bErrOut)
         {
@@ -118,12 +118,12 @@ namespace kjlib.Kihon.Models
                 if (buf.Substring(0, 1) != kakko_s)
                 {
                     if (bErrOut != true) return res;
-                    throw new Exception("æ“ª‚É‚©‚Á‚±‚ª‚ ‚è‚Ü‚¹‚ñ[" + kakko_s + "]");
+                    throw new Exception("ï¿½æ“ªï¿½É‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½[" + kakko_s + "]");
                 }
                 if (buf.Substring(buf.Length - 1, 1) != kakko_e)
                 {
                     if (bErrOut != true) return res;
-                    throw new Exception("I‚í‚è‚É‚©‚Á‚±‚ª‚ ‚è‚Ü‚¹‚ñ " + buf + " [" + kakko_e + "]");
+                    throw new Exception("ï¿½Iï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½ " + buf + " [" + kakko_e + "]");
                 }
                 res = buf.Substring(1, buf.Length - 2);
             }

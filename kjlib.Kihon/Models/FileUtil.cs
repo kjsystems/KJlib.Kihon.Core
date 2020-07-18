@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using kjlib.extensions.Extensions;
+using kjlib.kihon.Extensions;
 
-namespace kjlib.Kihon.Models
+namespace kjlib.kihon.Models
 {
     public class FileUtil
     {
@@ -15,7 +15,7 @@ namespace kjlib.Kihon.Models
         static extern int WNetGetConnection(string strLocalName, StringBuilder strbldRemoteName,
             ref int intRemoteNameLength); // ref <--- important
 
-        static public void deleteFile(string path)
+        public static void deleteFile(string path)
         {
             if (System.IO.File.Exists(path) == true)
             {
@@ -23,7 +23,7 @@ namespace kjlib.Kihon.Models
             }
         }
 
-        static public string getTextFromTextList(List<string> lst)
+        public static string getTextFromTextList(List<string> lst)
         {
             StringBuilder sb = new StringBuilder();
             foreach (string buf in lst) sb.Append(buf);
@@ -539,19 +539,19 @@ namespace kjlib.Kihon.Models
             return path.ToString();
         }
 #endif
-        static public string getTempDir()
+        public static string getTempDir()
         {
             return System.IO.Path.GetTempPath();
         }
 
-        static public string getTempDirKJ()
+        public static string getTempDirKJ()
         {
             string tempdir = System.IO.Path.GetTempPath().Combine("kj");
             tempdir.CreateDirIfNotExist();
             return tempdir;
         }
 
-        static public string getTempPath(string fname)
+        public static string getTempPath(string fname)
         {
             var path = System.IO.Path.GetTempFileName();
             return System.IO.Path.GetDirectoryName(path).Combine(System.IO.Path.GetFileName(fname));
