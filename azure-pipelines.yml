@@ -1,0 +1,46 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+  tags:
+    include:
+    - v*
+  branches:
+    include:
+    - master
+
+variables:
+  vmImageOfBuild: windows-2019
+  buildConfiguration: Release
+  buildProject: kjlib.Kihon/kjlib.Kihon.csproj
+  testProjects: test/**/*.csproj
+
+stages:
+- stage: build_test_stage
+  condition: in(variables['Build.Reason'], 'PullRequest', 'Manual')
+  jobs:
+  - job: test_job
+    displayName: Test
+    pool:
+      vmImage: $(vmImageOfBuild)
+    steps:
+    - task: DotNetCoreCLI@2
+      displayName: Test
+      inputs:
+        command: 'test'
+        projects: $(testProjects)
+        testRunTitle: 'run tests'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
