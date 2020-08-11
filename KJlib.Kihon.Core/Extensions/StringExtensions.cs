@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text;
 using KJlib.Kihon.Core.Models;
 
@@ -155,6 +156,59 @@ namespace KJlib.Kihon.Core.Extensions
             }
 
             return source;
+        }
+
+        public static int ToInt(this string source, int def)
+        {
+            int res = def;
+            if (source == null)
+            {
+                return def;
+            }
+
+            if (int.TryParse(source, out res))
+            {
+                return res;
+            }
+
+            return def;
+        }
+        public static float ToFloat(this string source, float def)
+        {
+            float res = def;
+            if (source == null)
+            {
+                return def;
+            }
+
+            if (float.TryParse(source, out res))
+            {
+                return res;
+            }
+
+            return def;
+        }
+
+        public static string DelKaigyo(this string buf)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            char[] tbl = { '\t', '\r', '\n' };
+            foreach (char ch in buf)
+            {
+                if (Array.IndexOf(tbl, ch) >= 0) continue;
+                sb.Append(ch);
+            }
+
+            return sb.ToString();
+        }
+
+        public static void DeleteFileIfExist(this string source)
+        {
+            if (System.IO.File.Exists(source) == true)
+            {
+                System.IO.File.Delete(source);
+            }
         }
     }
 }
