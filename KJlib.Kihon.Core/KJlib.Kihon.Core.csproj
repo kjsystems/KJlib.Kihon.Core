@@ -3,13 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.5</Version>
-    <PackageId>kjlib.kihon</PackageId>
+    <Version>1.0.6</Version>
+    <PackageId>KJlib.Kihon.Core</PackageId>
     <Authors>KJ Systems, Inc.</Authors>
     <Company>KJ Systems, Inc.</Company>
-    <Product>kjlib.kihon</Product>
-    <AssemblyName>kjlib.kihon</AssemblyName>
-    <RootNamespace>kjlib.kihon</RootNamespace>
+    <Product>KJlib.Kihon.Core</Product>
+    <AssemblyName>KJlib.Kihon.Core</AssemblyName>
+    <RootNamespace>KJlib.Kihon.Core</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
