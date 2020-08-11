@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Extensions.Logging;
 
-namespace kjlib.kihon.Models
+namespace KJlib.Kihon.Core.Models
 {
     /**
    * タグを分解する

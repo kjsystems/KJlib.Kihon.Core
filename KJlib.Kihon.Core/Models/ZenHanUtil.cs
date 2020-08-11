@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace kj.kihon.Utils
+namespace KJlib.Kihon.Core.Models
 {
     public class ZenHanUtil
     {
