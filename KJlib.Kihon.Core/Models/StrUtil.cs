@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-namespace kjlib.kihon.Models
+namespace KJlib.Kihon.Core.Models
 {
     public class StrUtil
     {

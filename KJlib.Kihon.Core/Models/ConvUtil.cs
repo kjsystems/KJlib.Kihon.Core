@@ -1,4 +1,4 @@
-﻿namespace kjlib.kihon.Models
+﻿namespace KJlib.Kihon.Core.Models
 {
     public class ConvUtil
     {

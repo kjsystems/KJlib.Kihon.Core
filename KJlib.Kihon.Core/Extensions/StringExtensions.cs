@@ -1,9 +1,8 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Text;
-using kj.kihon.Utils;
+using KJlib.Kihon.Core.Models;
 
-namespace kjlib.kihon.Extensions
+namespace KJlib.Kihon.Core.Extensions
 {
     public static class StringExtensions
     {

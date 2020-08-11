@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using kjlib.kihon.Extensions;
+using KJlib.Kihon.Core.Extensions;
 
-namespace kjlib.kihon.Models
+namespace KJlib.Kihon.Core.Models
 {
     public class FileUtil
     {
