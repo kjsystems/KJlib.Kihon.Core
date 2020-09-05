@@ -17,21 +17,6 @@ variables:
   buildProject: kjlib.Kihon/kjlib.Kihon.csproj
   testProjects: test/**/*.csproj
 
-stages:
-- stage: build_test_stage
-  condition: in(variables['Build.Reason'], 'PullRequest', 'Manual')
-  jobs:
-  - job: test_job
-    displayName: Test
-    pool:
-      vmImage: $(vmImageOfBuild)
-    steps:
-    - task: DotNetCoreCLI@2
-      displayName: Test
-      inputs:
-        command: 'test'
-        projects: $(testProjects)
-        testRunTitle: 'run tests'
 
 - stage: individual_ci_stage
   condition: eq(variables['Build.Reason'], 'IndividualCI')
