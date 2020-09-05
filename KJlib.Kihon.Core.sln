@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KJlib.Kihon.Core", "KJlib.Kihon.Core\KJlib.Kihon.Core.csproj", "{B75D94D7-DC78-46FE-A5D4-996B5EA29F76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KJlib.Kihon.Core", "KJlib.Kihon.Core\KJlib.Kihon.Core.csproj", "{B75D94D7-DC78-46FE-A5D4-996B5EA29F76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KJlib.Kihon.Tests", "KJlib.Kihon.Tests\KJlib.Kihon.Tests.csproj", "{EAFAE2BD-F058-4B82-BA9D-CFF510FDC1CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{B75D94D7-DC78-46FE-A5D4-996B5EA29F76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B75D94D7-DC78-46FE-A5D4-996B5EA29F76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B75D94D7-DC78-46FE-A5D4-996B5EA29F76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAFAE2BD-F058-4B82-BA9D-CFF510FDC1CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAFAE2BD-F058-4B82-BA9D-CFF510FDC1CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAFAE2BD-F058-4B82-BA9D-CFF510FDC1CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAFAE2BD-F058-4B82-BA9D-CFF510FDC1CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
