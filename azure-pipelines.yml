@@ -73,4 +73,4 @@ stages:
         command: 'push'
         packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
         nuGetFeedType: 'internal'
-        publishVstsFeed: 'KJLib/KJLib'
+        publishVstsFeed: '63faa203-4652-4c9d-b760-c516955ac348/a37dfd0f-e52c-4183-a9d7-6f25b552e029'
