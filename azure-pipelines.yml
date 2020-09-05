@@ -34,7 +34,7 @@ stages:
         testRunTitle: 'run tests'
 
 - stage: individual_ci_stage
-  condition: eq(variables['Build.Reason'], 'IndividualCI')
+##  condition: eq(variables['Build.Reason'], 'IndividualCI')
   jobs:
   - job: logging
     pool:
