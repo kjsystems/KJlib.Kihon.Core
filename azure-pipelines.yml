@@ -45,7 +45,8 @@ stages:
         echo Build.Reason is $(Build.Reason)
         echo Build.SourceBranch is $(Build.SourceBranch)
 - stage: push_stage
-  condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/v')
+##  condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/v')
+  condition: startsWith(variables['Build.SourceBranch'], 'refs/heads/master')
   jobs:
   - job: pack_job
     displayName: Pack and Push
@@ -72,4 +73,4 @@ stages:
         command: 'push'
         packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
         nuGetFeedType: 'internal'
-        publishVstsFeed: '4b0a92c6-28ec-45d8-b044-b37411c9af60'
+        publishVstsFeed: 'KJLib/KJLib'
