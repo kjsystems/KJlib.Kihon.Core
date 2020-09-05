@@ -19,7 +19,7 @@ variables:
 
 stages:
 - stage: build_test_stage
-##  condition: in(variables['Build.Reason'], 'PullRequest', 'Manual')
+  condition: in(variables['Build.Reason'], 'PullRequest', 'Manual')
   jobs:
   - job: test_job
     displayName: Test
@@ -34,7 +34,7 @@ stages:
         testRunTitle: 'run tests'
 
 - stage: individual_ci_stage
-##  condition: eq(variables['Build.Reason'], 'IndividualCI')
+  condition: eq(variables['Build.Reason'], 'IndividualCI')
   jobs:
   - job: logging
     pool:
@@ -45,8 +45,7 @@ stages:
         echo Build.Reason is $(Build.Reason)
         echo Build.SourceBranch is $(Build.SourceBranch)
 - stage: push_stage
-##  condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/v')
-  condition: startsWith(variables['Build.SourceBranch'], 'refs/heads/master')
+  condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/v')
   jobs:
   - job: pack_job
     displayName: Pack and Push
