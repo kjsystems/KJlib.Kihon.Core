@@ -15,7 +15,7 @@ variables:
   vmImageOfBuild: windows-2019
   buildConfiguration: Release
   buildProject: KJlib.Kihon.Core/KJlib.Kihon.Core.csproj
-  testProjects: test/**/*.csproj
+  testProjects: KJlib.Kihon.Tests/**/*.csproj
 
 stages:
 
