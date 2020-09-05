@@ -19,7 +19,7 @@ variables:
 
 stages:
 - stage: build_test_stage
-  condition: in(variables['Build.Reason'], 'PullRequest', 'Manual')
+##  condition: in(variables['Build.Reason'], 'PullRequest', 'Manual')
   jobs:
   - job: test_job
     displayName: Test
