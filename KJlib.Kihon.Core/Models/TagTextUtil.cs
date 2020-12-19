@@ -221,7 +221,7 @@ namespace KJlib.Kihon.Core.Models
                 char eof = (char)0x001a;
                 if (buf.IndexOf(eof) >= 0)
                 {
-                    log_.LogError(srcpath, gyono, "parsetxt", "EOFを無視します");
+                    log_.LogError($"{srcpath_}({gyono_}) parsetxt "+ "EOFを無視します");
                     buf = buf.Replace(eof.ToString(), "");
                 }
 
@@ -266,14 +266,13 @@ namespace KJlib.Kihon.Core.Models
                     char eof = (char)0x001a;
                     if (buf.IndexOf(eof) >= 0)
                     {
-                        log_.LogError(srcpath_, gyono_, "parsetxt", "EOFを無視します");
+                        log_.LogError($"{srcpath_}({gyono_}) parsetxt "+ "EOFを無視します");
                         buf = buf.Replace(eof.ToString(), "");
                     }
 
                     if (amaritxt.Length > 500000 + 100000)
                     {
-                        log_.LogError(srcpath_, gyono_, "parsetxt",
-                            "タグを解釈できない1 buf=" + buf + " amari len=" + amaritxt.Length + " buf" + amaritxt);
+                        log_.LogError($"{srcpath_}({gyono_}) parsetxt "+ "タグを解釈できない1 buf=" + buf + " amari len=" + amaritxt.Length + " buf" + amaritxt);
                         throw new Exception("タグを解釈できない1 gyo=" + buf + "\r\namari=" + amaritxt);
                     }
 
@@ -286,7 +285,7 @@ namespace KJlib.Kihon.Core.Models
             }
             catch (Exception ex)
             {
-                log_.LogError(srcpath_, gyono_, "parstext", ex.Message);
+                log_.LogError($"{srcpath_}({gyono_}) parstext "+ ex.Message);
             }
         }
 
@@ -314,7 +313,7 @@ namespace KJlib.Kihon.Core.Models
             }
             catch (Exception ex)
             {
-                log_.LogError(path, gyono_, "parsetxt", ex.Message);
+                log_.LogError($"{srcpath_}({gyono_}) parsetxt "+ ex.Message);
             }
         }
 
@@ -473,7 +472,7 @@ namespace KJlib.Kihon.Core.Models
             {
                 if (parent == null)
                 {
-                    log_.LogError(path, tag.GyoNo, "parstree", "親タグがnullはおかしい");
+                    log_.LogError($"{srcpath_}({gyono_}) parstree 親タグがnullはおかしい");
                 }
 
                 if (tag.isOpen() == true && tag.isShort() != true)
@@ -510,7 +509,7 @@ namespace KJlib.Kihon.Core.Models
             }
             catch (Exception ex)
             {
-                log_.LogError(path, 0, "parstree", ex.Message);
+                log_.LogError($"{srcpath_}({gyono_}) parstree "+ ex.Message);
             }
         }
 
@@ -531,7 +530,7 @@ namespace KJlib.Kihon.Core.Models
             }
             catch (Exception ex)
             {
-                log_.LogError("parstree", ex.Message);
+                log_.LogError($"{srcpath_}({gyono_}) parstree "+ ex.Message);
             }
         }
 
