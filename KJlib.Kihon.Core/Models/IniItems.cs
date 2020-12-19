@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using kj.kihon;
+﻿using System.Collections.Generic;
 
-namespace kjlib.lib.Models
+namespace KJlib.Kihon.Core.Models
 {
     public class IniItems : List<IniItem>
     {
