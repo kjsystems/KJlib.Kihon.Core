@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using kj.kihon;
+using KJlib.Kihon.Core.Models;
 using KJlib.Kihon.Core.Services;
 using Microsoft.Extensions.Logging;
 

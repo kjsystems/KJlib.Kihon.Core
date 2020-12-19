@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using kj.kihon;
 
-namespace kjlib.lib.Models
+namespace KJlib.Kihon.Core.Models
 {
     public class IniGroup
     {
@@ -124,7 +123,7 @@ namespace kjlib.lib.Models
                 return getWakaViewText(true);  //語彙/句 表示
             }
 
-            var sb=new StringBuilder();
+            var sb = new StringBuilder();
             sb.AppendLine($"[{this.name}]");
             foreach (var item in this.Items)
             {

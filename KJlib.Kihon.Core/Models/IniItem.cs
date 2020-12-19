@@ -1,4 +1,4 @@
-﻿namespace kj.kihon
+﻿namespace KJlib.Kihon.Core.Models
 {
     public class IniItem
     {
