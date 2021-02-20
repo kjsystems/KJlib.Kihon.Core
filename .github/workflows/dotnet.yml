@@ -22,9 +22,6 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
-    - name: Ensure GitHub NuGet Source
-      run: |
-        dotnet nuget add source ${{ env.NUGET_URL }} -u masatoru -p ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
@@ -33,9 +30,9 @@ jobs:
       run: dotnet test ${{env.TestProjectPath}}
     - name: Pack
       run: dotnet pack ${{env.TargetProjectPath}} --output .\artifacts --configuration Release
-    # - name: Ensure GitHub NuGet Source
-    #   run: |
-    #     dotnet nuget add source ${{ env.NUGET_URL }} -u masatoru -p ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text
+    - name: Ensure GitHub NuGet Source
+      run: |
+        dotnet nuget add source ${{ env.NUGET_URL }} -n github -u masatoru -p ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text
     - name: Publish NuGet Package
       run: dotnet nuget push .\artifacts\*.nupkg --api-key secrets.NUGET_API_KEY --source github --skip-duplicate
 
