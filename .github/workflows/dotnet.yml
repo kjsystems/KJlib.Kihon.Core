@@ -34,7 +34,9 @@ jobs:
       run: |
         dotnet nuget add source ${{env.NUGET_URL}} --name github --username masatoru --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text
     - name: Publish NuGet Package
-      run: dotnet nuget push .\artifacts\*.nupkg --api-key secrets.NUGET_API_KEY --source github --skip-duplicate
+      run: dotnet nuget push .\artifacts\*.nupkg --source github --skip-duplicate
+    # - name: Publish NuGet Package
+    #   run: dotnet nuget push .\artifacts\*.nupkg --api-key secrets.NUGET_API_KEY --source github --skip-duplicate
 
     # - name: Add GPR Source
     #   run: nuget sources Add -Name "GPR" -Source ${{env.NUGET_URL}} -UserName masatoru -Password ${{ secrets.GITHUB_PASSWORD }} -url 
