@@ -26,4 +26,5 @@ jobs:
       run: dotnet build --no-restore
     - name: Unit Testing
       uses: actions/checkout@v2.1.0
+    - name: Test
       run: dotnet test ${{env.TestProjectPath}}
