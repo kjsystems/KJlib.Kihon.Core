@@ -10,6 +10,7 @@
     <Product>KJlib.Kihon.Core</Product>
     <AssemblyName>KJlib.Kihon.Core</AssemblyName>
     <RootNamespace>KJlib.Kihon.Core</RootNamespace>
+    <RepositoryUrl>https://github.com/kjsystems/KJlib.Kihon.Core</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
