@@ -7,6 +7,7 @@ on:
     branches: [ master ]
 
 env:
+  TargetProjectPath: .\KJlib.Kihon.Core\KJlib.Kihon.Core.csproj
   TestProjectPath: .\KJlib.Kihon.Tests\KJlib.Kihon.Tests.csproj
 
 jobs:
@@ -26,3 +27,9 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test ${{env.TestProjectPath}}
+    - name: Pack
+      run: dotnet pack ${{env.TargetProjectPath}} --output .\artifacts --configuration Release
+    - name: Add GPR Source
+      run: nuget sources Add -Name "GPR" -Source  https://nuget.pkg.github.com/kjsystems/index.json -UserName masatoru -Password ${{ secrets.GITHUB_TOKEN }}
+    - name: Publish
+      run: nuget push ".\artifacts\" -Source "GPR" -SkipDuplicate
