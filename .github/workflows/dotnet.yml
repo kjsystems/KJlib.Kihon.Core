@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  TestProjectPath: KJlib.Kihon.Tests\KJlib.Kihon.Tests.csproj
+
 jobs:
   build:
 
@@ -22,4 +25,4 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test ${{env.TestProjectPath}}
