@@ -30,9 +30,9 @@ jobs:
       run: dotnet test ${{env.TestProjectPath}}
     - name: Pack
       run: dotnet pack ${{env.TargetProjectPath}} --output .\artifacts --configuration Release
-    - name: Add GPR Source
-      run: nuget sources Add -Name "GPR" -Source ${{env.NUGET_URL}} -UserName masatoru -Password ${{ secrets.GITHUB_TOKEN }}
-    - name: NuGet SET APIKEY
-      run: nuget setApiKey ${{ secrets.NUGET_API_KEY }} -Source ${{env.NUGET_URL}}
+    # - name: Add GPR Source
+    #   run: nuget sources Add -Name "GPR" -Source ${{env.NUGET_URL}} -UserName masatoru -Password ${{ secrets.GITHUB_TOKEN }}
+    # - name: NuGet SET APIKEY
+    #   run: nuget setApiKey ${{ secrets.NUGET_API_KEY }} -Source ${{env.NUGET_URL}}
     - name: Publish NuGet Package
-      run: nuget push ".\artifacts\" -Source "GPR" -SkipDuplicate
+      run: nuget push ".\artifacts\" --api-key secrets.NUGET_API_KEY --source "github"
