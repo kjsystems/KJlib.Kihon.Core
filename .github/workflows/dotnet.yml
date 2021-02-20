@@ -34,4 +34,4 @@ jobs:
     - name: NuGet SET APIKEY
       run: nuget setApiKey ${{ secrets.NUGET_API_KEY }}
     - name: Publish NuGet Package
-        nuget push ".\artifacts\" -Source "GPR" -SkipDuplicate
+      run: nuget push ".\artifacts\" -Source "GPR" -SkipDuplicate
