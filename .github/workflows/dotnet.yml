@@ -31,5 +31,7 @@ jobs:
       run: dotnet pack ${{env.TargetProjectPath}} --output .\artifacts --configuration Release
     - name: Add GPR Source
       run: nuget sources Add -Name "GPR" -Source  https://nuget.pkg.github.com/kjsystems/index.json -UserName masatoru -Password ${{ secrets.GITHUB_TOKEN }}
-    - name: Publish
-      run: nuget push ".\artifacts\" -Source "GPR" -SkipDuplicate
+    - name: Publish NuGet Package
+      run: |
+        nuget setApiKey ${{ secrets.NUGET_API_KEY }}
+        nuget push ".\artifacts\" -Source "GPR" -SkipDuplicate
