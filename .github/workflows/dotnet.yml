@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 env:
-  TestProjectPath: KJlib.Kihon.Tests\KJlib.Kihon.Tests.csproj
+  TestProjectPath: .\KJlib.Kihon.Tests\KJlib.Kihon.Tests.csproj
 
 jobs:
   build:
