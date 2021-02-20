@@ -35,4 +35,4 @@ jobs:
     # - name: NuGet SET APIKEY
     #   run: nuget setApiKey ${{ secrets.NUGET_API_KEY }} -Source ${{env.NUGET_URL}}
     - name: Publish NuGet Package
-      run: dotnet nuget push .\artifacts\*.nupkg --api-key secrets.NUGET_API_KEY --source github --skip-duplicate
+      run: dotnet nuget push .\artifacts\*.nupkg --api-key secrets.NUGET_API_KEY --source env.NUGET_URL --skip-duplicate
