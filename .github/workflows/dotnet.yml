@@ -9,7 +9,7 @@ on:
 env:
   TargetProjectPath: .\KJlib.Kihon.Core\KJlib.Kihon.Core.csproj
   TestProjectPath: .\KJlib.Kihon.Tests\KJlib.Kihon.Tests.csproj
-  NUGET_URL: https://nuget.pkg.github.com/kjsystems/index.json
+  NUGET_URL: https://nuget.pkg.github.com/masatoru/index.json
 
 jobs:
   build:
