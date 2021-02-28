@@ -160,33 +160,20 @@ namespace KJlib.Kihon.Core.Extensions
 
         public static int ToInt(this string source, int def)
         {
-            int res = def;
-            if (source == null)
-            {
-                return def;
-            }
-
-            if (int.TryParse(source, out res))
-            {
-                return res;
-            }
-
-            return def;
+            var res = def;
+            return int.TryParse(source, out res) ? res : def;
         }
+
+        public static int ToLong(this string source, long def)
+        {
+            var res = def;
+            return long.TryParse(source, out res) ? (int) res : (int) def;
+        }
+
         public static float ToFloat(this string source, float def)
         {
-            float res = def;
-            if (source == null)
-            {
-                return def;
-            }
-
-            if (float.TryParse(source, out res))
-            {
-                return res;
-            }
-
-            return def;
+            var res = def;
+            return float.TryParse(source, out res) ? res : def;
         }
 
         public static string DelKaigyo(this string buf)
