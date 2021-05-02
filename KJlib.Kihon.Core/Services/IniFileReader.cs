@@ -10,6 +10,7 @@ namespace KJlib.Kihon.Core.Services
     public class IniFileReader
     {
         private readonly ILogger _logger;
+        public enum ErrCode { hSuccess = 0, hFailure = -1, hCancel = -2 }
 
         public IniFileReader(ILogger logger)
         {
@@ -59,9 +60,9 @@ namespace KJlib.Kihon.Core.Services
             }
         }
 
-        public Constant.ErrCode readFile(string path, Encoding enc, ref IniGroups ini)
+        public ErrCode readFile(string path, Encoding enc, ref IniGroups ini)
         {
-            Constant.ErrCode rt = Constant.ErrCode.hFailure;
+            ErrCode rt = ErrCode.hFailure;
             do
             {
                 /*ini.Clear();*/
@@ -99,7 +100,7 @@ namespace KJlib.Kihon.Core.Services
                     }
                 }
                 sr.Close();
-                rt = Constant.ErrCode.hSuccess;
+                rt = ErrCode.hSuccess;
             } while (false);
             return rt;
         }
