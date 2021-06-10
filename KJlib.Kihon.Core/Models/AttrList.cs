@@ -271,7 +271,8 @@ namespace KJlib.Kihon.Core.Models
         {
             foreach (AttrItem item in this)
             {
-                if (item.Name == name)
+                // 名前があれば更新 ただし名前なしは複数あり
+                if ( !string.IsNullOrEmpty(name) && item.Name == name)
                 {
                     item.Value = value;
                     return;
