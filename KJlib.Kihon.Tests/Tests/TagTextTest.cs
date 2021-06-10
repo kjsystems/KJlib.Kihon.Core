@@ -21,6 +21,16 @@ namespace KJlib.Kihon.Tests.Tests
         }
 
         [Test]
+        public void 名前なし引数が二つ()
+        {
+            string buf = "<文章 窓左 集名>菟玖波集解題〔１菟玖波解〕</文章>";
+            var lst = TagTextUtil.parseText(buf);
+            Assert.AreEqual(3, lst.Count);
+            Assert.AreEqual(buf, lst.ToString());
+        }
+
+
+        [Test]
         public void TagTextUtil_改行を行番号としてカウント()
         {
             int gyono = 0;
