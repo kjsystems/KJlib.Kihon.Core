@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.31</Version>
+    <Version>1.0.32</Version>
     <PackageId>KJlib.Kihon.Core</PackageId>
     <Authors>KJ Systems, Inc.</Authors>
     <Company>KJ Systems, Inc.</Company>
@@ -11,6 +11,7 @@
     <AssemblyName>KJlib.Kihon.Core</AssemblyName>
     <RootNamespace>KJlib.Kihon.Core</RootNamespace>
     <RepositoryUrl>https://github.com/kjsystems/KJlib.Kihon.Core</RepositoryUrl>
+    <AssemblyVersion>1.0.32.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' ">

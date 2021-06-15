@@ -27,24 +27,14 @@ namespace KJlib.Kihon.Core.Extensions
             return source;
         }
 
+        /// <summary>
+        /// １つ上のディレクトリ
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
         public static string GetUpDir(this string source)
         {
-            var sb = new StringBuilder();
-            var cur = "";
-            for (int m = 0; m < source.Length; m++)
-            {
-                char ch = source[m];
-                cur += ch;
-                if (ch == '\\')
-                {
-                    //最後が\\なら追加しないでおしまい
-                    if (m + 1 == source.Length) break;
-                    sb.Append(cur);
-                    cur = "";
-                    continue;
-                }
-            }
-            return sb.ToString();
+            return Path.GetFullPath(Path.Combine(source, @"../"));
         }
 
         public static string GetLastDirName(this string source)
