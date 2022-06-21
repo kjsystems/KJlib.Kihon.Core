@@ -159,7 +159,7 @@ namespace KJlib.Kihon.Tests.Tests
             Assert.AreEqual(2, lst.Count);
             Assert.AreEqual(buf, lst.ToString());
         }
-        [Test]
+        // [Test]
         public void taglist_04()
         {
             string buf = "<html><ttime \r\naaa>";
@@ -169,7 +169,7 @@ namespace KJlib.Kihon.Tests.Tests
             Assert.AreEqual(2, lst.Count);
             Assert.AreEqual("<html><ttime aaa>", lst.ToString());
         }
-        [Test]
+        // [Test]
         public void taglist_05()
         {
             string buf = "<html><ttime \r\naaa>";
