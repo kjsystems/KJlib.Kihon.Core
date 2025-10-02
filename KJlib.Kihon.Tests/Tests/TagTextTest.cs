@@ -25,8 +25,8 @@ namespace KJlib.Kihon.Tests.Tests
         {
             string buf = "<文章 窓左 集名>菟玖波集解題〔１菟玖波解〕</文章>";
             var lst = TagTextUtil.parseText(buf);
-            Assert.AreEqual(3, lst.Count);
-            Assert.AreEqual(buf, lst.ToString());
+            Assert.That(3, Is.EqualTo(lst.Count));
+            Assert.That(buf, Is.EqualTo(lst.ToString()));
         }
 
 
@@ -35,23 +35,23 @@ namespace KJlib.Kihon.Tests.Tests
         {
             int gyono = 0;
             var taglst = TagTextUtil.parseText("<html>\r\naaa\r\n</html>", ref gyono, false);
-            Assert.AreEqual("<html>", taglst[0].ToString());
-            Assert.AreEqual(0, taglst[0].GyoNo);
-            Assert.AreEqual("\r\naaa\r\n", taglst[1].ToString());
-            Assert.AreEqual(0, taglst[1].GyoNo);
-            Assert.AreEqual("</html>", taglst[2].ToString());
-            Assert.AreEqual(2, taglst[2].GyoNo);
+            Assert.That("<html>", Is.EqualTo(taglst[0].ToString()));
+            Assert.That(0, Is.EqualTo(taglst[0].GyoNo));
+            Assert.That("\r\naaa\r\n", Is.EqualTo(taglst[1].ToString()));
+            Assert.That(0, Is.EqualTo(taglst[1].GyoNo));
+            Assert.That("</html>", Is.EqualTo(taglst[2].ToString()));
+            Assert.That(2, Is.EqualTo(taglst[2].GyoNo));
         }
         [Test]
         public void TagTextUtil_改行を行番号としてカウント02()
         {
             var taglst = TagTextUtil.parseText("<html>\r\naaa\r\n</html>");
-            Assert.AreEqual("<html>", taglst[0].ToString());
-            Assert.AreEqual(0, taglst[0].GyoNo);
-            Assert.AreEqual("\r\naaa\r\n", taglst[1].ToString());
-            Assert.AreEqual(0, taglst[1].GyoNo);
-            Assert.AreEqual("</html>", taglst[2].ToString());
-            Assert.AreEqual(2, taglst[2].GyoNo);
+            Assert.That("<html>", Is.EqualTo(taglst[0].ToString()));
+            Assert.That(0, Is.EqualTo(taglst[0].GyoNo));
+            Assert.That("\r\naaa\r\n", Is.EqualTo(taglst[1].ToString()));
+            Assert.That(0, Is.EqualTo(taglst[1].GyoNo));
+            Assert.That("</html>", Is.EqualTo(taglst[2].ToString()));
+            Assert.That(2, Is.EqualTo(taglst[2].GyoNo));
         }
 
 
@@ -61,14 +61,14 @@ namespace KJlib.Kihon.Tests.Tests
         {
             int gyono = 0;
             var taglst = TagTextUtil.parseText("<html",ref gyono, false);
-            Assert.AreEqual(0, taglst.Count);
+            Assert.That(0, Is.EqualTo(taglst.Count));
         }
         [Test]
         public void TagTextUtil_タグ閉じだけ()
         {
             var taglst = TagTextUtil.parseText(">");
-            Assert.AreEqual(1, taglst.Count);
-            Assert.AreEqual(">", taglst[0].ToString());
+            Assert.That(1, Is.EqualTo(taglst.Count));
+            Assert.That(">", Is.EqualTo(taglst[0].ToString()));
         }
 
         [Test]
@@ -76,27 +76,27 @@ namespace KJlib.Kihon.Tests.Tests
         {
             int gyono = 0;
             var lst = TagTextUtil.parseText("<span\nstyle=\'font-size:14.0pt;font-family:\"ＭＳ ゴシック\"\'>", ref gyono, false);
-            Assert.AreEqual("span", lst[0].getName());
-            Assert.AreEqual(1, lst[0].Attrs.Count);
-            Assert.AreEqual("<span style=\'font-size:14.0pt;font-family:\"ＭＳ ゴシック\"\'>", lst.ToString());
+            Assert.That("span", Is.EqualTo(lst[0].getName()));
+            Assert.That(1, Is.EqualTo(lst[0].Attrs.Count));
+            Assert.That("<span style=\'font-size:14.0pt;font-family:\"ＭＳ ゴシック\"\'>", Is.EqualTo(lst.ToString()));
         }
         [Test]
         public void TagTextUtil_タグ名改行属性_0d0a()
         {
             var lst = TagTextUtil.parseText("<span\r\nstyle=\'font-size:14.0pt;font-family:\"ＭＳ ゴシック\"\'>");
-            Assert.AreEqual("span", lst[0].getName());
-            Assert.AreEqual(1, lst[0].Attrs.Count);
-            Assert.AreEqual("<span style=\'font-size:14.0pt;font-family:\"ＭＳ ゴシック\"\'>", lst.ToString());
+            Assert.That("span", Is.EqualTo(lst[0].getName()));
+            Assert.That(1, Is.EqualTo(lst[0].Attrs.Count));
+            Assert.That("<span style=\'font-size:14.0pt;font-family:\"ＭＳ ゴシック\"\'>", Is.EqualTo(lst.ToString()));
         }
         [Test]
         public void taglist_属性にタグ()
         {
             string buf = "あああ<M 番号=\"いいい<M>\">ううう";
             TagList lst = TagTextUtil.parseText(buf);
-            Assert.AreEqual(3, lst.Count);
-            Assert.AreEqual("あああ", lst[0].ToString());
-            Assert.AreEqual("<M 番号=\"いいい<M>\">", lst[1].ToString());
-            Assert.AreEqual("ううう", lst[2].ToString());
+            Assert.That(3, Is.EqualTo(lst.Count));
+            Assert.That("あああ", Is.EqualTo(lst[0].ToString()));
+            Assert.That("<M 番号=\"いいい<M>\">", Is.EqualTo(lst[1].ToString()));
+            Assert.That("ううう", Is.EqualTo(lst[2].ToString()));
         }
 
         [Test]
@@ -106,8 +106,8 @@ namespace KJlib.Kihon.Tests.Tests
             TagList lst = new TagList();
             string ama = "";
             TagTextUtil.parseText(buf, ref lst, false, ref ama);
-            Assert.AreEqual(7, lst.Count);
-            Assert.AreEqual(buf, lst.ToString());
+            Assert.That(7, Is.EqualTo(lst.Count));
+            Assert.That(buf, Is.EqualTo(lst.ToString()));
         }
         [Test]
         public void taglist_parseしてテキストを返す_改行コード()
@@ -116,8 +116,8 @@ namespace KJlib.Kihon.Tests.Tests
             TagList lst = new TagList();
             string ama = "";
             TagTextUtil.parseText(buf, ref lst, false, ref ama);
-            Assert.AreEqual(7, lst.Count);
-            Assert.AreEqual(buf, lst.ToString());
+            Assert.That(7, Is.EqualTo(lst.Count));
+            Assert.That(buf, Is.EqualTo(lst.ToString()));
         }
         [Test]
         public void taglist_parseして省略タグはスペースあり()
@@ -127,7 +127,7 @@ namespace KJlib.Kihon.Tests.Tests
             TagList lst = new TagList();
             string ama = "";
             TagTextUtil.parseText(buf, ref lst, false, ref ama);
-            Assert.AreEqual(exp, lst.ToString());
+            Assert.That(exp, Is.EqualTo(lst.ToString()));
         }
         [Test]
         public void taglist_parseしてテキストを返す_改行コード2()
@@ -136,8 +136,8 @@ namespace KJlib.Kihon.Tests.Tests
             TagList lst = new TagList();
             string ama = "";
             TagTextUtil.parseText(buf, ref lst, false, ref ama);
-            Assert.AreEqual(7, lst.Count);
-            Assert.AreEqual(buf, lst.ToString());
+            Assert.That(7, Is.EqualTo(lst.Count));
+            Assert.That(buf, Is.EqualTo(lst.ToString()));
         }
         [Test]
         public void taglist_02()
@@ -146,8 +146,8 @@ namespace KJlib.Kihon.Tests.Tests
             TagList lst = new TagList();
             string ama = "";
             TagTextUtil.parseText(buf, ref lst, false, ref ama);
-            Assert.AreEqual(6, lst.Count);
-            Assert.AreEqual(buf, lst.ToString());
+            Assert.That(6, Is.EqualTo(lst.Count));
+            Assert.That(buf, Is.EqualTo(lst.ToString()));
         }
         [Test]
         public void taglist_03()
@@ -156,8 +156,8 @@ namespace KJlib.Kihon.Tests.Tests
             TagList lst = new TagList();
             string ama = "";
             TagTextUtil.parseText(buf, ref lst, false, ref ama);
-            Assert.AreEqual(2, lst.Count);
-            Assert.AreEqual(buf, lst.ToString());
+            Assert.That(2, Is.EqualTo(lst.Count));
+            Assert.That(buf, Is.EqualTo(lst.ToString()));
         }
         // [Test]
         public void taglist_04()
@@ -166,8 +166,8 @@ namespace KJlib.Kihon.Tests.Tests
             TagList lst = new TagList();
             string ama = "";
             TagTextUtil.parseText(buf, ref lst, false, ref ama);
-            Assert.AreEqual(2, lst.Count);
-            Assert.AreEqual("<html><ttime aaa>", lst.ToString());
+            Assert.That(2, Is.EqualTo(lst.Count));
+            Assert.That("<html><ttime aaa>", Is.EqualTo(lst.ToString()));
         }
         // [Test]
         public void taglist_05()
@@ -176,8 +176,8 @@ namespace KJlib.Kihon.Tests.Tests
             TagList lst = new TagList();
             string ama = "";
             TagTextUtil.parseText(buf, ref lst, false, ref ama);
-            Assert.AreEqual(2, lst.Count);
-            Assert.AreEqual("<html><ttime aaa>", lst.ToString());
+            Assert.That(2, Is.EqualTo(lst.Count));
+            Assert.That("<html><ttime aaa>", Is.EqualTo(lst.ToString()));
         }
         /**
 		 * 以下はコメントとして処理したい
@@ -196,8 +196,8 @@ namespace KJlib.Kihon.Tests.Tests
             TagList lst = new TagList();
             string ama = "";
             TagTextUtil.parseText(buf, ref lst, false, ref ama);
-            Assert.AreEqual(1, lst.Count);
-            Assert.AreEqual(buf, lst.ToString());
+            Assert.That(1, Is.EqualTo(lst.Count));
+            Assert.That(buf, Is.EqualTo(lst.ToString()));
         }
         [Test]
         public void taglist_07()
@@ -206,8 +206,8 @@ namespace KJlib.Kihon.Tests.Tests
             TagList lst = new TagList();
             string ama = "";
             TagTextUtil.parseText(buf, ref lst, false, ref ama);
-            Assert.AreEqual(2, lst.Count);
-            Assert.AreEqual(buf, lst.ToString());
+            Assert.That(2, Is.EqualTo(lst.Count));
+            Assert.That(buf, Is.EqualTo(lst.ToString()));
         }
         [Test]
         public void taglist_08()
@@ -216,9 +216,9 @@ namespace KJlib.Kihon.Tests.Tests
             TagList lst = new TagList();
             string ama = "";
             TagTextUtil.parseText(buf, ref lst, false, ref ama);
-            Assert.AreEqual(4, lst.Count);
-            Assert.AreEqual("!", lst[2].getName());
-            Assert.AreEqual(buf, lst.ToString());
+            Assert.That(4, Is.EqualTo(lst.Count));
+            Assert.That("!", Is.EqualTo(lst[2].getName()));
+            Assert.That(buf, Is.EqualTo(lst.ToString()));
         }
         /**
 		 * 挿入のテスト
@@ -232,11 +232,11 @@ namespace KJlib.Kihon.Tests.Tests
             string ama = "";
             TagTextUtil.parseText(buf, ref lst, false, ref ama);
             lst.Insert(1, new TagText("<xxx>", 0));   //追加
-            Assert.AreEqual(4, lst.Count);
-            Assert.AreEqual(exp, lst.ToString());
+            Assert.That(4, Is.EqualTo(lst.Count));
+            Assert.That(exp, Is.EqualTo(lst.ToString()));
             lst.RemoveAt(1);                       //削除
-            Assert.AreEqual(3, lst.Count);
-            Assert.AreEqual(buf, lst.ToString());
+            Assert.That(3, Is.EqualTo(lst.Count));
+            Assert.That(buf, Is.EqualTo(lst.ToString()));
         }
         [Test]
         public void taglist_10()
@@ -245,8 +245,8 @@ namespace KJlib.Kihon.Tests.Tests
             TagList lst = new TagList();
             string ama = "";
             TagTextUtil.parseText(buf, ref lst, false, ref ama);
-            Assert.AreEqual(3, lst.Count);
-            Assert.AreEqual(buf, lst.ToString());
+            Assert.That(3, Is.EqualTo(lst.Count));
+            Assert.That(buf, Is.EqualTo(lst.ToString()));
         }
         [Test]
         public void taglist_11()
@@ -255,8 +255,8 @@ namespace KJlib.Kihon.Tests.Tests
             TagList lst = new TagList();
             string ama = "";
             TagTextUtil.parseText(buf, ref lst, true/*bNameSP*/, ref ama);
-            Assert.AreEqual(3, lst.Count);
-            Assert.AreEqual(buf, lst.ToString());
+            Assert.That(3, Is.EqualTo(lst.Count));
+            Assert.That(buf, Is.EqualTo(lst.ToString()));
         }
         [Test]
         public void taglist_11b()
@@ -265,8 +265,8 @@ namespace KJlib.Kihon.Tests.Tests
             TagList lst = new TagList();
             string ama = "";
             TagTextUtil.parseText(buf, ref lst, false/*bNameSP*/, ref ama);
-            Assert.AreEqual(1, lst.Count);
-            Assert.AreEqual(buf, lst.ToString());
+            Assert.That(1, Is.EqualTo(lst.Count));
+            Assert.That(buf, Is.EqualTo(lst.ToString()));
         }
         [Test]
         public void taglist_12()
@@ -275,8 +275,8 @@ namespace KJlib.Kihon.Tests.Tests
             TagList lst = new TagList();
             string ama = "";
             TagTextUtil.parseText(buf, ref lst, true/*bNameSP*/, ref ama);
-            Assert.AreEqual(3, lst.Count);
-            Assert.AreEqual(buf, lst.ToString());
+            Assert.That(3, Is.EqualTo(lst.Count));
+            Assert.That(buf, Is.EqualTo(lst.ToString()));
         }
         [Test]
         public void taglist_12b()
@@ -285,8 +285,8 @@ namespace KJlib.Kihon.Tests.Tests
             TagList lst = new TagList();
             string ama = "";
             TagTextUtil.parseText(buf, ref lst, false/*bNameSP*/, ref ama);
-            Assert.AreEqual(1, lst.Count);
-            Assert.AreEqual(buf, lst.ToString());
+            Assert.That(1, Is.EqualTo(lst.Count));
+            Assert.That(buf, Is.EqualTo(lst.ToString()));
         }
         [Test]
         public void taglist_13()
@@ -295,8 +295,8 @@ namespace KJlib.Kihon.Tests.Tests
             TagList lst = new TagList();
             string ama = "";
             TagTextUtil.parseText(buf, ref lst, true/*bNameSP*/, ref ama);
-            Assert.AreEqual(5, lst.Count);
-            Assert.AreEqual(buf, lst.ToString());
+            Assert.That(5, Is.EqualTo(lst.Count));
+            Assert.That(buf, Is.EqualTo(lst.ToString()));
         }
         [Test]
         public void taglist_14()
@@ -305,8 +305,8 @@ namespace KJlib.Kihon.Tests.Tests
             TagList lst = new TagList();
             string ama = "";
             TagTextUtil.parseText(buf, ref lst, true/*bNameSP*/, ref ama);
-            Assert.AreEqual(buf, lst.ToString());
-            Assert.AreEqual(4, lst.Count);
+            Assert.That(buf, Is.EqualTo(lst.ToString()));
+            Assert.That(4, Is.EqualTo(lst.Count));
 
         }
         [Test]
@@ -316,8 +316,8 @@ namespace KJlib.Kihon.Tests.Tests
             TagList lst = new TagList();
             string ama = "";
             TagTextUtil.parseText(buf, ref lst, true/*bNameSP*/, ref ama);
-            Assert.AreEqual(6, lst.Count);
-            Assert.AreEqual(buf, lst.ToString());
+            Assert.That(6, Is.EqualTo(lst.Count));
+            Assert.That(buf, Is.EqualTo(lst.ToString()));
         }
         [Test]
         public void taglist_16()
@@ -326,17 +326,17 @@ namespace KJlib.Kihon.Tests.Tests
             TagList lst = new TagList();
             string ama = "";
             TagTextUtil.parseText(buf, ref lst, true/*bNameSP*/, ref ama);
-            Assert.AreEqual(buf, lst.ToString());
-            Assert.AreEqual(4, lst.Count);
+            Assert.That(buf, Is.EqualTo(lst.ToString()));
+            Assert.That(4, Is.EqualTo(lst.Count));
 
             TagText utf = (TagText)lst[1];
-            Assert.AreEqual(true, utf.isUTF(), "UTFでない");
-            Assert.AreEqual(false, utf.isCID(), "CIDでない");
-            Assert.AreEqual("9999", utf.getUTFCode());
+            Assert.That(true, Is.EqualTo(utf.isUTF()), "UTFでない");
+            Assert.That(false, Is.EqualTo(utf.isCID()), "CIDでない");
+            Assert.That("9999", Is.EqualTo(utf.getUTFCode()));
 
             TagText cid = (TagText)lst[2];
-            Assert.AreEqual(true, cid.isCID(), "CIDでない");
-            Assert.AreEqual(9999, cid.getCID(), "CIDが取得できない " + cid.ToString());
+            Assert.That(true, Is.EqualTo(cid.isCID()), "CIDでない");
+            Assert.That(9999, Is.EqualTo(cid.getCID()), "CIDが取得できない " + cid.ToString());
         }
         [Test]
         public void taglist_17()
@@ -346,10 +346,10 @@ namespace KJlib.Kihon.Tests.Tests
             string ama = "";
             TagTextUtil.parseText(buf, ref lst, true, ref ama);
             TagText txt = (TagText)lst[2];
-            Assert.AreEqual(true, txt.isNamespace(), "Namespaceでない");
-            Assert.AreEqual(true, txt.isHojo(), "HOJOでない");
-            Assert.AreEqual(false, txt.isCID(), "CIDでない");
-            Assert.AreEqual("3f3f", txt.getHojoCode(), "HOJOが取得できない " + txt.ToString());
+            Assert.That(true, Is.EqualTo(txt.isNamespace()), "Namespaceでない");
+            Assert.That(true, Is.EqualTo(txt.isHojo()), "HOJOでない");
+            Assert.That(false, Is.EqualTo(txt.isCID()), "CIDでない");
+            Assert.That("3f3f", Is.EqualTo(txt.getHojoCode()), "HOJOが取得できない " + txt.ToString());
         }
         [Test]
         public void taglist_18()
@@ -359,7 +359,7 @@ namespace KJlib.Kihon.Tests.Tests
             TagList lst = new TagList();
             string ama = "";
             TagTextUtil.parseText(buf, ref lst, true, ref ama);
-            Assert.AreEqual(exp, lst.ToString());
+            Assert.That(exp, Is.EqualTo(lst.ToString()));
         }
         [Test]
         public void taglist_19()
@@ -368,7 +368,7 @@ namespace KJlib.Kihon.Tests.Tests
             TagList lst = new TagList();
             string ama = "";
             TagTextUtil.parseText(buf, ref lst, true, ref ama);
-            Assert.AreEqual(buf, lst.ToString());
+            Assert.That(buf, Is.EqualTo(lst.ToString()));
         }
         [Test]
         public void taglist_20()
@@ -377,11 +377,11 @@ namespace KJlib.Kihon.Tests.Tests
             TagList taglst = new TagList();
             string ama = "";
             TagTextUtil.parseTextKugiriMulti(buf, 0, ref taglst, "（「", "）」", false, ref ama);
-            Assert.AreEqual(5, taglst.Count);
+            Assert.That(5, Is.EqualTo(taglst.Count));
             string res = "あああ（いいい）ううう「えええ」おおお";
-            Assert.AreEqual(res, taglst.ToString());
-            Assert.AreEqual("あああ", taglst[0].ToString(), "token=" + taglst[0] + " istag=" + taglst[0].isTag() + " istext=" + taglst[0].isText());
-            Assert.AreEqual("（いいい）", taglst[1].ToString());
+            Assert.That(res, Is.EqualTo(taglst.ToString()));
+            Assert.That("あああ", Is.EqualTo(taglst[0].ToString()), "token=" + taglst[0] + " istag=" + taglst[0].isTag() + " istext=" + taglst[0].isText());
+            Assert.That("（いいい）", Is.EqualTo(taglst[1].ToString()));
         }
         [Test]
         public void taglist_21()
@@ -390,11 +390,11 @@ namespace KJlib.Kihon.Tests.Tests
             TagList taglst = new TagList();
             string ama = "";
             TagTextUtil.parseTextKugiriMulti(buf, 0, ref taglst, "（「", "）」", false, ref ama);
-            Assert.AreEqual(3, taglst.Count);
+            Assert.That(3, Is.EqualTo(taglst.Count));
             string res = "あああ（「いいい」）ううう";
-            Assert.AreEqual(res, taglst.ToString());
-            Assert.AreEqual("あああ", taglst[0].ToString(), "token=" + taglst[0] + " istag=" + taglst[0].isTag() + " istext=" + taglst[0].isText());
-            Assert.AreEqual("（「いいい」）", taglst[1].ToString());
+            Assert.That(res, Is.EqualTo(taglst.ToString()));
+            Assert.That("あああ", Is.EqualTo(taglst[0].ToString()), "token=" + taglst[0] + " istag=" + taglst[0].isTag() + " istext=" + taglst[0].isText());
+            Assert.That("（「いいい」）", Is.EqualTo(taglst[1].ToString()));
         }
         [Test]
         public void taglist_22()
@@ -403,11 +403,11 @@ namespace KJlib.Kihon.Tests.Tests
             TagList taglst = new TagList();
             string ama = "";
             TagTextUtil.parseTextKugiriMulti(buf, 0, ref taglst, "（「", "）」", false, ref ama);
-            Assert.AreEqual(3, taglst.Count);
+            Assert.That(3, Is.EqualTo(taglst.Count));
             string res = "あああ（「いいい」えええ）ううう";
-            Assert.AreEqual(res, taglst.ToString());
-            Assert.AreEqual("あああ", taglst[0].ToString(), "token=" + taglst[0] + " istag=" + taglst[0].isTag() + " istext=" + taglst[0].isText());
-            Assert.AreEqual("（「いいい」えええ）", taglst[1].ToString());
+            Assert.That(res, Is.EqualTo(taglst.ToString()));
+            Assert.That("あああ", Is.EqualTo(taglst[0].ToString()), "token=" + taglst[0] + " istag=" + taglst[0].isTag() + " istext=" + taglst[0].isText());
+            Assert.That("（「いいい」えええ）", Is.EqualTo(taglst[1].ToString()));
         }
         [Test]
         public void taglist_23()
@@ -415,7 +415,7 @@ namespace KJlib.Kihon.Tests.Tests
             string buf = "あああ<ruby>いいい<rt>ううう</rt></ruby>えええ";
             TagList taglst = new TagList();
             string rep = "あああいいいえええ";
-            Assert.AreEqual(rep, TagTextUtil.getOyaTextFromRubyTag(buf));
+            Assert.That(rep, Is.EqualTo(TagTextUtil.getOyaTextFromRubyTag(buf)));
         }
         [Test]
         public void taglist_24()
@@ -425,7 +425,7 @@ namespace KJlib.Kihon.Tests.Tests
             string ama = "";
             TagTextUtil.parseTextKugiriMulti(buf, 0, ref taglst, "（", "）", false, ref ama);
             string exp = "あああ（いいい（ううう）えええ）おおお";
-            Assert.AreEqual(exp, taglst.ToString());
+            Assert.That(exp, Is.EqualTo(taglst.ToString()));
         }
         [Test]
         public void taglist_24a()
@@ -436,7 +436,7 @@ namespace KJlib.Kihon.Tests.Tests
             string ama = "";
             TagTextUtil.parseText(buf, ref taglst, '＜', '＞', false, ref ama);
             //string exp = "あああ（いいい（ううう）えええ）おおお";
-            Assert.AreEqual(buf, taglst.ToString());
+            Assert.That(buf, Is.EqualTo(taglst.ToString()));
         }
 
 
@@ -447,10 +447,10 @@ namespace KJlib.Kihon.Tests.Tests
             TagList taglst = new TagList();
             string ama = "";
             TagTextUtil.parseText(buf, ref taglst, '<', '>', false, ref ama);
-            Assert.AreEqual("", ama);
+            Assert.That("", Is.EqualTo( ama));
 
             string exp = buf;
-            Assert.AreEqual(buf, taglst.ToString());
+            Assert.That(buf, Is.EqualTo(taglst.ToString()));
         }
         [Test]
         public void taglist_26()
@@ -460,7 +460,7 @@ namespace KJlib.Kihon.Tests.Tests
             string ama = "";
             TagTextUtil.parseText(buf, ref taglst, '<', '>', false, ref ama);
             string exp = buf;
-            Assert.AreEqual(buf, taglst.ToString());
+            Assert.That(buf, Is.EqualTo(taglst.ToString()));
         }
         [Test]
         public void taglist_26a()
@@ -472,7 +472,7 @@ namespace KJlib.Kihon.Tests.Tests
             TagTextUtil util = new TagTextUtil(_logger);
             util.parseTextFromPath(path, Encoding.UTF8, ref taglst, false);
             string exp = buf;
-            Assert.AreEqual(buf, taglst.ToString());
+            Assert.That(buf, Is.EqualTo(taglst.ToString()));
         }
         [Test]
         public void taglist_26b()
@@ -485,7 +485,7 @@ namespace KJlib.Kihon.Tests.Tests
             TagTextUtil util = new TagTextUtil(_logger);
             util.parseTextFromPath(path, Encoding.UTF8, ref taglst, false);
             string exp = buf;
-            Assert.AreEqual(buf, taglst.ToString());
+            Assert.That(buf, Is.EqualTo(taglst.ToString()));
         }
         [Test]
         public void taglist_27()
@@ -495,7 +495,7 @@ namespace KJlib.Kihon.Tests.Tests
             string ama = "";
             TagTextUtil.parseText(buf, ref taglst, '<', '>', false, ref ama);
             string exp = buf;
-            Assert.AreEqual(buf, taglst.ToString());
+            Assert.That(buf, Is.EqualTo(taglst.ToString()));
         }
         [Test]
         public void taglist_28()
@@ -505,7 +505,7 @@ namespace KJlib.Kihon.Tests.Tests
             string ama = "";
             TagTextUtil.parseText(buf, ref taglst, '<', '>', false, ref ama);
             string exp = buf;
-            Assert.AreEqual(buf, taglst.ToString());
+            Assert.That(buf, Is.EqualTo(taglst.ToString()));
         }
         [Test]
         public void taglist_29()
@@ -515,7 +515,7 @@ namespace KJlib.Kihon.Tests.Tests
             string ama = "";
             TagTextUtil.parseText(buf, ref taglst, '<', '>', false, ref ama);
             string exp = buf;
-            Assert.AreEqual(buf, taglst.ToString());
+            Assert.That(buf, Is.EqualTo(taglst.ToString()));
         }
         /**
 		 * XMLをTREE構造で読み込み
@@ -530,11 +530,11 @@ namespace KJlib.Kihon.Tests.Tests
             string path = FileUtil.writeTempFile(buf, Encoding.UTF8);
             util.parseTextTreeFromXmlPath(path, Encoding.UTF8, ref root);
             string exp = buf;
-            Assert.AreEqual(buf, root.ChildList.ToString());
+            Assert.That(buf, Is.EqualTo(root.ChildList.ToString()));
 
             TagBase para = root.ChildList[0];  //<p>
-            Assert.AreEqual("<span>aaa</span>", para.getChildText());
-            Assert.AreEqual("aaa", para.getChildTextOnly());
+            Assert.That("<span>aaa</span>", Is.EqualTo(para.getChildText()));
+            Assert.That("aaa", Is.EqualTo(para.getChildTextOnly()));
         }
         [Test]
         public void taglist_31()
@@ -544,8 +544,8 @@ namespace KJlib.Kihon.Tests.Tests
             string ama = "";
             TagTextUtil.parseText(buf, ref taglst, '<', '>', false, ref ama);
             string exp = buf;
-            Assert.AreEqual(buf, taglst.ToString());
-            Assert.AreEqual(TagBase.TYPE.Hatena, taglst[0].Type);
+            Assert.That(buf, Is.EqualTo(taglst.ToString()));
+            Assert.That(TagBase.TYPE.Hatena, Is.EqualTo(taglst[0].Type));
         }
         [Test]
         public void taglist_32()
@@ -557,7 +557,7 @@ namespace KJlib.Kihon.Tests.Tests
             string path = FileUtil.writeTempFile(buf, Encoding.UTF8);
             util.parseTextTreeFromXmlPath(path, Encoding.UTF8, ref root);
             string exp = buf;
-            Assert.AreEqual(buf, root.ChildList.ToString());
+            Assert.That(buf, Is.EqualTo(root.ChildList.ToString()));
         }
         [Test]
         public void taglist_33()
@@ -570,11 +570,11 @@ namespace KJlib.Kihon.Tests.Tests
             string ama = "";
             TagTextUtil.parseText(buf, ref taglst, false, ref ama);
             string exp = buf;
-            Assert.AreEqual(4, taglst.Count);
-            Assert.AreEqual("p", taglst[0].getName());
-            Assert.AreEqual("span", taglst[1].getName());
-            Assert.AreEqual(true, taglst[2].isComment());
-            Assert.AreEqual("v:shape", taglst[3].getName());
+            Assert.That(4, Is.EqualTo(taglst.Count));
+            Assert.That("p", Is.EqualTo(taglst[0].getName()));
+            Assert.That("span", Is.EqualTo(taglst[1].getName()));
+            Assert.That(true, Is.EqualTo(taglst[2].isComment()));
+            Assert.That("v:shape", Is.EqualTo(taglst[3].getName()));
 
         }
         [Test]
@@ -586,10 +586,10 @@ namespace KJlib.Kihon.Tests.Tests
             TagTextUtil.parseText(buf, ref taglst, false, ref ama);
             List<string> strlst = new List<string>();
             TagTextUtil.createListFromTagList(taglst, ref strlst);
-            Assert.AreEqual(3, strlst.Count);
-            Assert.AreEqual("あ\r\n", strlst[0]);
-            Assert.AreEqual("い<b>\r\n", strlst[1]);
-            Assert.AreEqual("うえ", strlst[2]);
+            Assert.That(3, Is.EqualTo( strlst.Count));
+            Assert.That("あ\r\n", Is.EqualTo( strlst[0]));
+            Assert.That("い<b>\r\n", Is.EqualTo( strlst[1]));
+            Assert.That("うえ", Is.EqualTo(strlst[2]));
         }
         [Test]
         public void taglist_stringからStringList作成01()
@@ -597,19 +597,19 @@ namespace KJlib.Kihon.Tests.Tests
             string buf = "あ\r\nい<b>\r\nうえ";
             List<string> strlst = new List<string>();
             TagTextUtil.createListFromText(buf, ref strlst);
-            Assert.AreEqual(3, strlst.Count);
-            Assert.AreEqual("あ\r\n", strlst[0]);
-            Assert.AreEqual("い<b>\r\n", strlst[1]);
-            Assert.AreEqual("うえ", strlst[2]);
+            Assert.That(3, Is.EqualTo(strlst.Count));
+            Assert.That("あ\r\n", Is.EqualTo(strlst[0]));
+            Assert.That("い<b>\r\n", Is.EqualTo(strlst[1]));
+            Assert.That("うえ", Is.EqualTo(strlst[2]));
         }
         [Test]
         public void taglist_iscomment()
         {
             TagList taglst = TagTextUtil.parseText("あああ<!--[if gte vml 1]>xxxx<![endif]-->いいい");
-            Assert.AreEqual(5, taglst.Count);
-            Assert.AreEqual(true, taglst[0].isText());
-            Assert.AreEqual(true, taglst[1].isComment());
-            Assert.AreEqual(true, taglst[2].isText());
+            Assert.That(5, Is.EqualTo(taglst.Count));
+            Assert.That(true, Is.EqualTo(taglst[0].isText()));
+            Assert.That(true, Is.EqualTo(taglst[1].isComment()));
+            Assert.That(true, Is.EqualTo(taglst[2].isText()));
         }
 
     }
