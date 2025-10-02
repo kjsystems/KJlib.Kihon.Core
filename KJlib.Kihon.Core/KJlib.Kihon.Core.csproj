@@ -1,9 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFrameworks>net6.0;net9.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.34</Version>
+    <Version>1.0.35</Version>
     <PackageId>KJlib.Kihon.Core</PackageId>
     <Authors>KJ Systems, Inc.</Authors>
     <Company>KJ Systems, Inc.</Company>
@@ -17,12 +20,16 @@
 		<Summary>KJlib.Kihon.Core</Summary>
   </PropertyGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' ">
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.*" />
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net9.0' ">
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.*" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net5.0' ">
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.*" />
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.*" />
   </ItemGroup>
+
+  <!-- <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' "> -->
+  <!--   <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.*" /> -->
+  <!-- </ItemGroup> -->
 
 </Project>
