@@ -56,9 +56,9 @@ jobs:
       env:
         NUGET_KEY: ${{ secrets.NUGET_API_KEY }}
       run: |
-        echo "Publishing packages to NuGet.org"
-        if [ -z "%NUGET_KEY%" ]; then
-          echo "##[error] NUGET_API_KEY secret is not set"
+        Write-Host "Publishing packages to NuGet.org"
+        if (-not $env:NUGET_KEY) {
+          Write-Error "NUGET_API_KEY secret is not set"
           exit 1
-        fi
-        dotnet nuget push .\artifacts\*.nupkg -s https://api.nuget.org/v3/index.json -k %NUGET_KEY% --skip-duplicate
+        }
+        dotnet nuget push .\artifacts\*.nupkg -s https://api.nuget.org/v3/index.json -k $env:NUGET_KEY --skip-duplicate
