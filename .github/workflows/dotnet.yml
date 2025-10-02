@@ -52,10 +52,13 @@ jobs:
       run: dotnet nuget add source ${{env.NUGET_URL}} --name github --username masatoru --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text
     - name: Publish NuGet Package
       run: dotnet nuget push .\artifacts\*.nupkg --source github --skip-duplicate --api-key ${{ secrets.GITHUB_TOKEN }}
-    - name: Publish to NuGet
-      uses: brandedoutcast/publish-nuget@v2
-      with:
-        PROJECT_FILE_PATH: ${{env.TargetProjectPath}}
-        VERSION_REGEX: '^\s*<Version>(.*)<\/Version>\s*$'
-        TAG_FORMAT: '*'
-        NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+    - name: Publish to NuGet.org (manual)
+      env:
+        NUGET_KEY: ${{ secrets.NUGET_API_KEY }}
+      run: |
+        echo "Publishing packages to NuGet.org"
+        if [ -z "%NUGET_KEY%" ]; then
+          echo "##[error] NUGET_API_KEY secret is not set"
+          exit 1
+        fi
+        dotnet nuget push .\artifacts\*.nupkg -s https://api.nuget.org/v3/index.json -k %NUGET_KEY% --skip-duplicate
