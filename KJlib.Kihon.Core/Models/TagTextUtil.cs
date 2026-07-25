@@ -541,6 +541,20 @@ namespace KJlib.Kihon.Core.Models
             return parseText(buf, ref gyono, ref taglst, open_tag, close_tag, bNameSP, ref amaritxt);
         }
 
+        // エラー表示用に長い文字列を問題箇所の前後だけに短縮する
+        static string ShortenAround(string buf, int pos)
+        {
+            const int before = 40;
+            const int after = 60;
+            if (buf.Length <= before + after) return buf;
+
+            var start = Math.Max(0, pos - before);
+            var len = Math.Min(before + after, buf.Length - start);
+            var head = start > 0 ? "…" : "";
+            var tail = start + len < buf.Length ? "…" : "";
+            return head + buf.Substring(start, len) + tail;
+        }
+
         // 戻り値がfalseだとタグ開始の文字列あり
         static public bool parseText(string buf, ref int gyono, ref TagList taglst,
             char open_tag, char close_tag, bool bNameSP, ref string amaritxt)
@@ -589,7 +603,7 @@ namespace KJlib.Kihon.Core.Models
                     {
                         if (bOpen == true)
                         {
-                            throw new Exception("起こし<タグが続いています [" + cur + "] " + buf);
+                            throw new Exception("起こし<タグが続いています [" + ShortenAround(cur.ToString(), cur.Length) + "] " + ShortenAround(buf, m));
                         }
 #if BUG_PROG
 						Console.WriteLine("tagtextutil parseText 3 addtext cur={0}", cur);
@@ -609,7 +623,7 @@ namespace KJlib.Kihon.Core.Models
                     {
                         if (bOpen != true)
                         {
-                            throw new Exception($"閉じ>タグが続いています cur=[{cur}] buf={buf}");
+                            throw new Exception($"閉じ>タグが続いています cur=[{ShortenAround(cur.ToString(), cur.Length)}] buf={ShortenAround(buf, m)}");
                         }
 
                         bOpen = false;
